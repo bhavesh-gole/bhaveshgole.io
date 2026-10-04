@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavesh Gole | Data Engineer</title>
+    <!-- Importing a clean, modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+        nav a {
+            margin: 0 1.5rem;
+            font-weight: 600;
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        header p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container for Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3b82f6;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Skills Badges */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skill-badge {
+            background-color: #eff6ff;
+            color: #2563eb;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* Experience */
+        .experience-card {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .role-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .company-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3b82f6;
+        }
+        .experience-card ul {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+            color: #475569;
+        }
+        .experience-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-outline {
+            border: 2px solid #e2e8f0;
+            color: #475569;
+        }
+        .btn-outline:hover {
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.25rem; }
+            .experience-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .contact-links { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Bhavesh Gole</h1>
+        <p>Data Engineer | Specializing in Data as a Service (DaaS) Solutions</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a Data Engineer focusing on enterprise data integration, cloud data warehousing, and master data management (MDM). I specialize in designing and deploying robust Data as a Service (DaaS) solutions, streamlining complex workflows, and executing advanced data modeling to drive strategic business decisions. When I'm not optimizing data pipelines, I share insights on data engineering concepts and technical workflows on X.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid">
+                <span class="skill-badge">Informatica IICS</span>
+                <span class="skill-badge">Reltio MDM</span>
+                <span class="skill-badge">Snowflake</span>
+                <span class="skill-badge">SQL</span>
+                <span class="skill-badge">KNIME</span>
+                <span class="skill-badge">Alteryx</span>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <span class="role-title">Data Engineer</span>
+                </div>
+                <div class="company-name">Deloitte</div>
+                <ul>
+                    <li>Architect and configure complex data workflows, optimize advanced SQL queries, and manage enterprise-level data models.</li>
+                    <li>Deliver scalable Data as a Service (DaaS) solutions utilizing cloud-native warehousing and Master Data Management frameworks.</li>
+                    <li>Recognized with a promotion in 2025 for driving impactful enterprise data integration initiatives.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p>I'm always open to discussing data engineering trends, DaaS architecture, and cloud data warehousing. Feel free to reach out via email or connect with me on social media.</p>
+            
+            <div class="contact-links">
+                <a href="mailto:YOUR_EMAIL@example.com" class="btn btn-primary">Email Me</a>
+                <a href="https://linkedin.com/in/YOUR_LINKEDIN_URL" target="_blank" class="btn btn-outline">LinkedIn</a>
+                <a href="https://x.com/YOUR_X_HANDLE" target="_blank" class="btn btn-outline">X (Twitter)</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Bhavesh Gole. Built for scalable data.</p>
+    </footer>
+
+</body>
+</html>
