@@ -4,367 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhavesh Gole | Data Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Importing Fonts to match the clean Sans-Serif and the stylish Serif italic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+    
     <style>
+        /* Base Colors and Setup based on the screenshot */
         :root {
-            --bg-color: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.5);
-            --card-bg: rgba(30, 41, 59, 0.7);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+            --bg-color: rgb(255, 255, 255);
+            --text-main: rgb(10, 10, 10);
+            --text-muted: #666666;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Glassmorphism Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        header {
-            min-height: 100vh;
+            font-family: 'Public Sans', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInDown 1s forwards 0.2s;
-        }
-
-        .subtitle-container {
-            height: 30px;
-            margin-bottom: 2rem;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            border-right: 2px solid var(--accent);
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        /* Scroll Reveal Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Sections */
-        section {
-            padding: 8rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-        }
-
-        section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        p.about-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Skills Grid with Hover Animation */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px var(--accent-glow);
-        }
-
-        /* Experience Timeline */
-        .experience-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        .experience-card:hover {
-            transform: scale(1.02);
-        }
-
-        .exp-header {
+        /* Header Navigation */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
+            padding: 1.5rem 3vw;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        .exp-role {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .header-center {
+            background-color: #111;
             color: #fff;
-        }
-
-        .exp-company {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .experience-card ul {
-            list-style-type: none;
-        }
-
-        .experience-card li {
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .experience-card li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* Contact Buttons */
-        .contact-container {
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
             display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-center::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #4ade80; /* Green dot */
+            border-radius: 50%;
+        }
+
+        .header-right {
+            /* Placeholder for the dark mode icons in the screenshot */
+            width: 50px; 
+        }
+
+        /* Main Content Layout */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            padding: 0 10vw;
+            max-width: 1400px;
+            margin-top: -10vh; /* Slight adjustment to center perfectly */
         }
 
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        /* Massive Interactive Headline */
+        h1 {
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 500;
+            line-height: 1.1;
+            margin: 0 0 2rem 0;
+            letter-spacing: -0.03em;
+            outline: none;
+        }
+
+        /* The outlined "effortless" style */
+        .effortless-style {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-weight: 400;
+            -webkit-text-stroke: 1.5px var(--text-main);
+            color: transparent;
             position: relative;
-            overflow: hidden;
-            z-index: 1;
+            display: inline-block;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 15px var(--accent-glow);
+        /* The multiplayer cursor tag hovering over the text */
+        .cursor-tag {
+            position: absolute;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            font-family: 'Public Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            top: -15px;
+            right: -25px;
+            pointer-events: none;
+            font-style: normal;
+            letter-spacing: normal;
+            -webkit-text-stroke: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--accent-glow);
+        /* Subtext paragraph */
+        p.bio {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
         }
 
-        .btn-outline {
-            border: 1px solid var(--text-muted);
+        /* Links matching the screenshot */
+        .links {
+            display: flex;
+            gap: 2rem;
+            font-weight: 500;
+            margin-bottom: 4rem;
+            font-size: 0.95rem;
+        }
+
+        .links a {
             color: var(--text-main);
+            text-decoration: none;
+            transition: opacity 0.2s;
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
+        .links a:hover {
+            opacity: 0.6;
         }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Bottom hint text */
+        .sub-hint {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hides the ugly blue outline when typing in the headline */
+        [contenteditable="true"]:focus {
+            outline: none;
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 3rem; }
-            .subtitle { font-size: 1.2rem; }
-            nav { gap: 1rem; padding: 1rem; }
+            header { padding: 1.5rem 1.5rem; }
+            main { padding: 0 1.5rem; }
+            .header-center { display: none; } /* Hide status on small screens for cleaner look */
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-    </nav>
-
-    <header id="home">
-        <h1 class="title">Bhavesh Gole</h1>
-        <div class="subtitle-container">
-            <span class="subtitle" id="typewriter"></span>
-        </div>
-        <div class="contact-container reveal">
-            <a href="mailto:youremail@example.com" class="btn btn-primary">Get in Touch</a>
-            <a href="https://x.com/yourhandle" target="_blank" class="btn btn-outline">Follow on X</a>
-        </div>
+    <header>
+        <div style="font-weight: 600;">Bhavesh Gole</div>
+        <div class="header-center">Available for full-time roles</div>
+        <div class="header-right"></div>
     </header>
 
-    <section id="about" class="reveal">
-        <h2>About Me</h2>
-        <p class="about-text">
-            I am a Data Engineer specializing in robust enterprise data integration, cloud data warehousing, and master data management. I focus on architecting Data as a Service (DaaS) solutions that streamline complex workflows and translate vast data into strategic business value. When not optimizing pipelines, I document follower milestones and share insights on data engineering workflows.
+    <main>
+        <!-- The H1 has contenteditable="true" so you can literally click and type in it, matching the original site's functionality -->
+        <h1 contenteditable="true" spellcheck="false">
+            Data pipelines that<br>
+            feel <span class="effortless-style" contenteditable="false">effortless.<span class="cursor-tag">Bhavesh</span></span>
+        </h1>
+
+        <p class="bio">
+            Data Engineer specializing in DaaS.<br>
+            Right now: scalable enterprise integration at Deloitte.
         </p>
-    </section>
 
-    <section id="skills" class="reveal">
-        <h2>Core Technologies</h2>
-        <div class="skills-grid">
-            <div class="skill-card">Informatica IICS</div>
-            <div class="skill-card">Reltio MDM</div>
-            <div class="skill-card">Snowflake</div>
-            <div class="skill-card">SQL</div>
-            <div class="skill-card">KNIME</div>
-            <div class="skill-card">Alteryx</div>
+        <div class="links">
+            <a href="#work">View work ↗</a>
+            <a href="mailto:YOUR_EMAIL@example.com">Get in touch ↗</a>
         </div>
-    </section>
 
-    <section id="experience" class="reveal">
-        <h2>Experience</h2>
-        <div class="experience-card">
-            <div class="exp-header">
-                <span class="exp-role">Data Engineer</span>
-                <span class="exp-company">Deloitte</span>
-            </div>
-            <ul>
-                <li>Architect scalable Data as a Service (DaaS) solutions utilizing cloud-native warehousing and advanced Master Data Management frameworks.</li>
-                <li>Design, configure, and optimize complex data workflows and enterprise-level models using modern integration tools.</li>
-                <li>Recognized with a 2025 promotion for consistently driving high-impact enterprise data initiatives.</li>
-            </ul>
+        <div class="sub-hint">
+            That's live. Click the headline and type.
         </div>
-    </section>
+    </main>
 
-    <!-- JavaScript for Animations -->
-    <script>
-        // Typing Effect
-        const text = "Data Engineer | DaaS Specialist";
-        let index = 0;
-        const speed = 100;
-        const typewriterElement = document.getElementById("typewriter");
-
-        function typeWriter() {
-            if (index < text.length) {
-                typewriterElement.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            } else {
-                // Blink cursor effect after typing finishes
-                setInterval(() => {
-                    typewriterElement.style.borderRightColor = 
-                        typewriterElement.style.borderRightColor === 'transparent' ? 'var(--accent)' : 'transparent';
-                }, 500);
-            }
-        }
-        
-        // Start typing after a short delay
-        setTimeout(typeWriter, 1000);
-
-        // Intersection Observer for Scroll Animations
-        const reveals = document.querySelectorAll(".reveal");
-
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add("active");
-                observer.unobserve(entry.target);
-            });
-        }, revealOptions);
-
-        reveals.forEach(reveal => {
-            revealOnScroll.observe(reveal);
-        });
-    </script>
 </body>
 </html>
