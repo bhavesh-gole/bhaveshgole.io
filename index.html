@@ -4,254 +4,367 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhavesh Gole | Data Engineer</title>
-    <!-- Importing a clean, modern font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles & Reset */
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --card-bg: rgba(30, 41, 59, 0.7);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
+            scroll-behavior: smooth;
         }
 
-        /* Navigation */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Glassmorphism Navbar */
         nav {
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            padding: 1.2rem;
             display: flex;
             justify-content: center;
-            padding: 1rem;
+            gap: 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
+
         nav a {
-            margin: 0 1.5rem;
+            color: var(--text-main);
+            text-decoration: none;
             font-weight: 600;
-            color: #64748b;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
+
         nav a:hover {
-            color: #2563eb;
+            color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #ffffff;
-            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-        }
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        header p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 0 2rem;
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
         }
 
-        /* Container for Main Content */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        .title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInDown 1s forwards 0.2s;
+        }
+
+        .subtitle-container {
+            height: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            border-right: 2px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Sections */
         section {
-            margin-bottom: 4rem;
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            padding: 8rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
+
         section h2 {
-            font-size: 2rem;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #3b82f6;
-            display: inline-block;
-            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
         }
 
-        /* Skills Badges */
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        p.about-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Skills Grid with Hover Animation */
         .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .skill-badge {
-            background-color: #eff6ff;
-            color: #2563eb;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid #bfdbfe;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
         }
 
-        /* Experience */
-        .experience-card {
-            border-left: 4px solid #e2e8f0;
-            padding-left: 1.5rem;
-            margin-bottom: 2rem;
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
-        .experience-header {
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        /* Experience Timeline */
+        .experience-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: scale(1.02);
+        }
+
+        .exp-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .role-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        .company-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #3b82f6;
-        }
-        .experience-card ul {
-            margin-top: 1rem;
-            padding-left: 1.2rem;
-            color: #475569;
-        }
-        .experience-card li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
-        /* Contact Section */
-        .contact-links {
+        .exp-role {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-card ul {
+            list-style-type: none;
+        }
+
+        .experience-card li {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Contact Buttons */
+        .contact-container {
             display: flex;
-            gap: 1.5rem;
+            justify-content: center;
+            gap: 2rem;
             margin-top: 2rem;
         }
+
         .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             font-weight: 600;
-            text-align: center;
+            text-decoration: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
+
         .btn-primary {
-            background-color: #2563eb;
-            color: #ffffff;
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
+
         .btn-primary:hover {
-            background-color: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
+
         .btn-outline {
-            border: 2px solid #e2e8f0;
-            color: #475569;
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
         }
+
         .btn-outline:hover {
-            border-color: #94a3b8;
-            color: #0f172a;
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #64748b;
-            font-size: 0.9rem;
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.25rem; }
-            .experience-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-            .contact-links { flex-direction: column; }
+        @media (max-width: 768px) {
+            .title { font-size: 3rem; }
+            .subtitle { font-size: 1.2rem; }
+            nav { gap: 1rem; padding: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
     </nav>
 
-    <header>
-        <h1>Bhavesh Gole</h1>
-        <p>Data Engineer | Specializing in Data as a Service (DaaS) Solutions</p>
+    <header id="home">
+        <h1 class="title">Bhavesh Gole</h1>
+        <div class="subtitle-container">
+            <span class="subtitle" id="typewriter"></span>
+        </div>
+        <div class="contact-container reveal">
+            <a href="mailto:youremail@example.com" class="btn btn-primary">Get in Touch</a>
+            <a href="https://x.com/yourhandle" target="_blank" class="btn btn-outline">Follow on X</a>
+        </div>
     </header>
 
-    <div class="container">
+    <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <p class="about-text">
+            I am a Data Engineer specializing in robust enterprise data integration, cloud data warehousing, and master data management. I focus on architecting Data as a Service (DaaS) solutions that streamline complex workflows and translate vast data into strategic business value. When not optimizing pipelines, I document follower milestones and share insights on data engineering workflows.
+        </p>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2>Core Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">Informatica IICS</div>
+            <div class="skill-card">Reltio MDM</div>
+            <div class="skill-card">Snowflake</div>
+            <div class="skill-card">SQL</div>
+            <div class="skill-card">KNIME</div>
+            <div class="skill-card">Alteryx</div>
+        </div>
+    </section>
+
+    <section id="experience" class="reveal">
+        <h2>Experience</h2>
+        <div class="experience-card">
+            <div class="exp-header">
+                <span class="exp-role">Data Engineer</span>
+                <span class="exp-company">Deloitte</span>
+            </div>
+            <ul>
+                <li>Architect scalable Data as a Service (DaaS) solutions utilizing cloud-native warehousing and advanced Master Data Management frameworks.</li>
+                <li>Design, configure, and optimize complex data workflows and enterprise-level models using modern integration tools.</li>
+                <li>Recognized with a 2025 promotion for consistently driving high-impact enterprise data initiatives.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- JavaScript for Animations -->
+    <script>
+        // Typing Effect
+        const text = "Data Engineer | DaaS Specialist";
+        let index = 0;
+        const speed = 100;
+        const typewriterElement = document.getElementById("typewriter");
+
+        function typeWriter() {
+            if (index < text.length) {
+                typewriterElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Blink cursor effect after typing finishes
+                setInterval(() => {
+                    typewriterElement.style.borderRightColor = 
+                        typewriterElement.style.borderRightColor === 'transparent' ? 'var(--accent)' : 'transparent';
+                }, 500);
+            }
+        }
         
-        <!-- About Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a Data Engineer focusing on enterprise data integration, cloud data warehousing, and master data management (MDM). I specialize in designing and deploying robust Data as a Service (DaaS) solutions, streamlining complex workflows, and executing advanced data modeling to drive strategic business decisions. When I'm not optimizing data pipelines, I share insights on data engineering concepts and technical workflows on X.
-            </p>
-        </section>
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Technical Arsenal</h2>
-            <div class="skills-grid">
-                <span class="skill-badge">Informatica IICS</span>
-                <span class="skill-badge">Reltio MDM</span>
-                <span class="skill-badge">Snowflake</span>
-                <span class="skill-badge">SQL</span>
-                <span class="skill-badge">KNIME</span>
-                <span class="skill-badge">Alteryx</span>
-            </div>
-        </section>
+        // Intersection Observer for Scroll Animations
+        const reveals = document.querySelectorAll(".reveal");
 
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2>Experience</h2>
-            
-            <div class="experience-card">
-                <div class="experience-header">
-                    <span class="role-title">Data Engineer</span>
-                </div>
-                <div class="company-name">Deloitte</div>
-                <ul>
-                    <li>Architect and configure complex data workflows, optimize advanced SQL queries, and manage enterprise-level data models.</li>
-                    <li>Deliver scalable Data as a Service (DaaS) solutions utilizing cloud-native warehousing and Master Data Management frameworks.</li>
-                    <li>Recognized with a promotion in 2025 for driving impactful enterprise data integration initiatives.</li>
-                </ul>
-            </div>
-        </section>
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Let's Connect</h2>
-            <p>I'm always open to discussing data engineering trends, DaaS architecture, and cloud data warehousing. Feel free to reach out via email or connect with me on social media.</p>
-            
-            <div class="contact-links">
-                <a href="mailto:YOUR_EMAIL@example.com" class="btn btn-primary">Email Me</a>
-                <a href="https://linkedin.com/in/YOUR_LINKEDIN_URL" target="_blank" class="btn btn-outline">LinkedIn</a>
-                <a href="https://x.com/YOUR_X_HANDLE" target="_blank" class="btn btn-outline">X (Twitter)</a>
-            </div>
-        </section>
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
 
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Bhavesh Gole. Built for scalable data.</p>
-    </footer>
-
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+    </script>
 </body>
 </html>
